@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      margin: 10px 0;
+    }
+    input, button, div {
+      margin: 10px 0;
+      padding: 10px;
+    }
+    #box {
+      display: inline-flex;
+      width: 150px;
+      height: 150px;
+      background-color: lightgray;
+      line-height: 150px;
+    }
+  </style>
+</head>
+<body onload="pageLoaded()">
+
+ 
+  <h1 id="id1" onclick="changeTitle()">Welcome! Click Me!</h1>
+
+  <p id="p1" onmouseover="changeOver(this)" onmouseout="changeOut(this)">
+    Hover over me to change my color.
+  </p>
+
+  <input type="text" id="text-input" onchange="changeInput()" placeholder="Type and enter"> 
+  <button id="b1">Click Me</button>
+
+  <div id="box" onmousedown="changeBackground1()" onmouseup="changeBackground2()">Hold down here</div>
+
+  <script>
+    //  Runs when the page loads
+    function pageLoaded() {
+      alert("Page has loaded successfully!");
+    }
+
+    // Changes the title's text and color on click
+    function changeTitle() {
+      var title = document.getElementById("id1");
+      title.innerHTML = "You clicked the title!";
+      title.style.color = "purple";
+    }
+
+    // Changes text color on mouse over
+    function changeOver(obj) {
+      obj.style.color = "blue";
+    }
+
+    //  Reverts text color on mouse out
+    function changeOut(obj) {
+      obj.style.color = "pink";
+    }
+
+    // Converts to uppercase
+    function changeInput() {
+      var inputElement = document.getElementById("text-input");
+      inputElement.value = inputElement.value.toUpperCase();  // Converts to uppercase
+    }
+
+    //  Changes background color on mouse down
+    function changeBackground1() {
+      document.getElementById("box").style.backgroundColor = "black";
+    }
+
+    //  Changes background color on mouse up
+    function changeBackground2() {
+      document.getElementById("box").style.backgroundColor = "lightgray"; 
+    }
+
+    // AddEventListener: Alerts when the button is clicked
+    var button = document.getElementById('b1');
+    button.addEventListener("click", function () {
+      alert("Button clicked using addEventListener!");
+    });
+
+    // AddEventListener: shows a message when the box is hovered over
+    var box = document.getElementById("box");
+box.addEventListener("mouseover", function () {
+  box.innerHTML = "Mouse is over!"; 
+});
+
+// Window resize event
+window.addEventListener("resize", function() {
+  alert("The window has been resized!");
+});
+
+  </script>
+</body>
+</html>
